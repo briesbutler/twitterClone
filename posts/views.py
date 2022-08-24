@@ -16,7 +16,7 @@ def index(request, **post_id):
             form = PostForm(request.POST, request.FILES, instance=post)
             if form.is_valid():
                 form.save()
-                return HttpResponseRedirect('')
+                return HttpResponseRedirect('/')
         else:
             form = PostForm(instance=post)
         posts = Post.objects.all().order_by('-id')[:20]
@@ -27,7 +27,7 @@ def index(request, **post_id):
             form = PostForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
-                return HttpResponseRedirect('')
+                return HttpResponseRedirect('/')
             else:
                 return error
         posts = Post.objects.all().order_by('-id')[:20]
@@ -39,7 +39,7 @@ def delete(request, post_id):
     # Find post
     post = Post.objects.get(id=post_id)
     post.delete()
-    return HttpResponseRedirect('')
+    return HttpResponseRedirect('/')
 
 
 def editTweet(request, post_id):
@@ -49,7 +49,7 @@ def editTweet(request, post_id):
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('')
+            return HttpResponseRedirect('/')
     else:
         form = PostForm(instance=post)
     posts = Post.objects.all().order_by('-id')[:20]

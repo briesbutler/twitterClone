@@ -3,10 +3,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post
 from .forms import PostForm
 from distutils.log import error
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 # Create your views here.
 
-
+@ensure_csrf_cookie
 def index(request, **post_id):
     if post_id != {}:
         val = next(iter(post_id.items()))[1]
@@ -42,6 +43,7 @@ def delete(request, post_id):
     return HttpResponseRedirect('/')
 
 
+@ensure_csrf_cookie
 def editTweet(request, post_id):
     post = Post.objects.get(id=post_id)
 
@@ -61,6 +63,7 @@ def edit(request, post_id):
     return render(request, 'edit.html', {'post': post, 'post_id': post_id})
 
 
+@ensure_csrf_cookie
 def tweetLikeAdd(request, post_id):
     if request.method == "POST":
         post = Post.objects.get(id=post_id)
@@ -71,6 +74,7 @@ def tweetLikeAdd(request, post_id):
     return render(request, 'index.html')
 
 
+@ensure_csrf_cookie
 def tweetLikeSubtract(request, post_id):
     if request.method == "POST":
         post = Post.objects.get(id=post_id)

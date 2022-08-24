@@ -1,1 +1,1 @@
-web: waitress-serve --listen=localhost:5000 twitterclone.wsgi:application
+web: python manage.py runserver 0.0.0.0:5000

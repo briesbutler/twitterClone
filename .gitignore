@@ -1,4 +1,4 @@
-venv
+twittercloneVenv
 *.pyc
 staticfiles
 .env

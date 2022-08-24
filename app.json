@@ -1,0 +1,22 @@
+{
+  "name": "Twitter Clone",
+  "description": "A simple version of twitter",
+  "image": "techis icon",
+  "repository": "https://github.com/briesbutler/twitterclone.git",
+  "keywords": ["twitter clone"],
+  "addons": ["heroku-postgresql"],
+  "env": {
+    "SECRET_KEY": {
+      "description": "The secret key for the Django application.",
+      "generator": "secret"
+    }
+  },
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "python manage.py collectstatic --noinput",
+        "test": "python manage.py test"
+      }
+    }
+  }
+}

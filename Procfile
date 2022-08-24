@@ -1,1 +1,1 @@
-web: waitress-serve --listen=localhost:5000--listen="*:$PORT" twitterclone.wsgi:application
+web: waitress-serve --listen="*:$PORT" twitterclone.wsgi:application

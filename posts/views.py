@@ -64,8 +64,9 @@ def edit(request, post_id):
 def tweetLikeAdd(request, post_id):
     if request.method == "POST":
         post = Post.objects.get(id=post_id)
-        post.like_count += 1
-        post.save()
+        like_count = post.like_count
+        
+        Post.objects.filter(id=post_id).update(like_count = like_count + 1)
         context = {'post_id': post_id, 'post': post}
     return render(request, 'index.html')
 
@@ -73,7 +74,8 @@ def tweetLikeAdd(request, post_id):
 def tweetLikeSubtract(request, post_id):
     if request.method == "POST":
         post = Post.objects.get(id=post_id)
-        post.like_count -= 1
-        post.save()
+        like_count = post.like_count
+        
+        Post.objects.filter(id=post_id).update(like_count = like_count - 1)
         context = {'post_id': post_id, 'post': post}
     return render(request, 'index.html')

@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+<div class="content">
+  <div class="header">
+    <img src="{% static 'img/logo-twitterblue.svg' %}" class="logo" />
+    <h1>Edit</h1>
+  </div>
+
+  <div class="tweet-input">
+    <div class="my-icon">
+      <img class="my-img" src="{% static 'img/sample-icon.jpg' %}" />
+    </div>
+
+    <div class="post_form">
+      {% load cloudinary %}
+      <form
+        action="/{{ post.id }}/"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <input
+          class="nameinput"
+          type="text"
+          name="name"
+          placeholder="Your name"
+          maxlength="14"
+          value="{{ post.name }}"
+          required
+        />
+        <textarea
+          class="bodytextarea"
+          name="body"
+          placeholder="What's happening?"
+          required
+          maxlength="140"
+        >
+{{ post.body }}</textarea
+        >
+        <div class="file-update">
+          <div class="image">
+            <img
+              class="image"
+              src="{{ post.image.url }}"
+              style="max-width: 400px"
+            />
+            <input type="file" class="imgform" name="image" />
+          </div>
+          <div class="updiv">
+            <a href="/" class="tweet-cancel"> Cancel </a>
+            <input class="Update" type="submit" value="Update" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"
+  ></script>
+  <script src="{% static 'js/scripts.js' %}"></script>
+</div>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+<div class="content">
+  <div class="header">
+    <img src="{% static 'img/logo-twitterblue.svg' %}" class="logo" />
+    <h1>Home</h1>
+  </div>
+  <div class="tweet-input">
+    <div class="my-icon">
+      <img class="my-img" src="{% static 'img/sample-icon.jpg' %}" />
+    </div>
+
+    <div class="post_form">
+      {% load cloudinary %}
+      <form action="/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input
+          class="nameinput"
+          type="text"
+          name="name"
+          placeholder="Your name"
+          maxlength="14"
+          required
+        />
+        <textarea
+          maxlength="140"
+          class="bodytextarea"
+          name="body"
+          placeholder="What's happening?"
+          required
+        ></textarea>
+        <div class="file-tweet">
+          <div class="image">
+            <input type="file" class="form" name="image" />
+          </div>
+          <input class="tweet" type="submit" value="Tweet" />
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="posts">
+    <ul>
+      {% for post in posts %}
+      <li>
+        <div class="logo">
+          <img class="logo-img" src="{% static 'img/sample-icon.jpg' %}" />
+        </div>
+        <div class="name_body nameDateBodyImgLikes">
+          <div class="name_date">
+            <div class="name">{{ post.name }}</div>
+            <div class="datetime">
+              {% if post.updated_at %} {{ post.updated_at }} {% else %} {{
+              post.created_at }} {% endif %}
+            </div>
+          </div>
+          <p class="body">{{ post.body }}</p>
+          <img class="body-image" src="{{ post.image.url }}" />
+          <div class="icon-list">
+            <button id="btn" class="like js-like" data-like="{{ post.id }}">
+              <img
+                class="like_icon"
+                src="{% static 'img/icon-heart-twitterblue.svg' %}"
+              />
+            </button>
+            <div id="count" class="like-count js-like-count">
+              {{ post.like_count }}
+            </div>
+          </div>
+        </div>
+        <img
+          class="menu_icon js-menu-icon"
+          src="{% static 'img/ellipsis-solid.svg' %}"
+        />
+        <div class="menu">
+          <a class="menu-item" href="/delete/{{ post.id }}/">Delete</a>
+          <br />
+          <a class="menu-item" href="/edit/{{ post.id }}/">Edit</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"
+  ></script>
+  <script src="{% static 'js/scripts.js' %}"></script>
+</div>
+
+{% endblock %}

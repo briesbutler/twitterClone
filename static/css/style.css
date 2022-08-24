@@ -1,0 +1,289 @@
+/*
+Common
+*************************/
+
+html,
+body {
+  height: 100%;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.content {
+  max-width: 600px;
+  min-width: 445px;
+  padding: 0;
+  justify-content: center;
+  display: flex;
+  text-align: left;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+Header
+*************************/
+
+.header {
+  max-width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+}
+
+.header img {
+  max-width: 8.3%;
+  width: 50px;
+}
+
+.header h1 {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 7px;
+  font-size: 20px;
+}
+
+/*
+Input
+*************************/
+
+.tweet-input {
+  display: flex;
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+.tweet-input .my-icon {
+  max-width: 10%;
+}
+
+.tweet-input .my-img {
+  border-radius: 50%;
+  width: 60px;
+  max-width: 100%;
+}
+
+.tweet-input .post_form {
+  width: 100%;
+  padding: 0px 9px;
+  max-width: 90%;
+}
+
+.post_form .nameinput {
+  font-size: 17px;
+  font-weight: bold;
+  width: 100%;
+  border: none;
+  padding: 5px;
+  appearance: none;
+}
+
+.post_form .nameinput:focus {
+  outline: none;
+}
+
+.post_form .bodytextarea {
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 18px;
+  resize: none;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.post_form .bodytextarea:focus {
+  outline: none;
+}
+
+.post_form .file-tweet {
+  margin-top: 11px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.post_form .file-tweet .image {
+  max-width: 50%;
+}
+
+.post_form .file-update {
+  margin-top: 11px;
+}
+
+.post_form .file-update .image {
+  max-width: 100% !important;
+  max-height: 500px;
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
+.post_form .file-tweet .tweet {
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  width: 80px;
+  height: 40px;
+  border-radius: 25px;
+  background-color: #1da1f2;
+  color: #fff;
+  cursor: pointer;
+}
+
+.post_form .file-update .updiv {
+  position: relative;
+  display: flex;
+  justify-content: end;
+}
+
+.post_form .file-update .Update {
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  width: 80px;
+  height: 40px;
+  border-radius: 25px;
+  background-color: #1da1f2;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.tweet-cancel {
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  width: 80px;
+  border-radius: 25px;
+  background-color: rgb(73, 73, 73);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px;
+}
+
+/*
+Post
+*************************/
+
+.posts ul {
+  padding: 0;
+  margin: 0;
+}
+
+.posts li {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 16px;
+  position: relative;
+  list-style: none;
+}
+
+.posts li .logo {
+  max-width: 10%;
+}
+
+.posts li .logo-img {
+  border-radius: 50%;
+  width: 60px;
+  max-width: 100%;
+}
+
+.posts li .name_body {
+  max-width: 90%;
+  width: 100%;
+  padding: 5px 16px;
+}
+
+.posts li .name_body .name_date {
+  display: flex;
+}
+
+.posts li .name_body .name {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.posts li .name_body .datetime {
+  color: gray;
+  font-size: 12px;
+  padding: 3px 10px;
+}
+
+.upddatetime {
+  color: gray;
+  font-size: 12px;
+  padding: 3px 10px;
+}
+
+.posts li .name_body .body {
+  margin: 0;
+  padding: 5px 0px;
+  font-size: 16px;
+  width: 500px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.posts li .name_body .body-image {
+  max-width: 100%;
+  max-height: 500px;
+  margin-bottom: 10px;
+}
+
+.posts li .menu_icon {
+  width: 20px;
+  position: absolute;
+  top: 22px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.posts li .menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 15px;
+  border: 1px solid #ccc;
+  background-color: white;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 3px;
+  line-height: 20px;
+}
+
+.posts li .menu .menu-item {
+  text-decoration: none;
+  color: #1da1f2;
+}
+
+.posts li .icon-list {
+  display: flex;
+  width: 100%;
+}
+
+.posts li .like {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.posts li .like_icon {
+  max-width: 20px;
+  cursor: pointer;
+}
+
+.posts li .like-count {
+  margin-left: 5px;
+  margin-top: 1px;
+  font-size: 17px;
+}

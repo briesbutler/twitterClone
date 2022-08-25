@@ -40,7 +40,8 @@ else:
     ALLOWED_HOSTS = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if not IS_HEROKU:
+    DEBUG = True
 
 # Application definition
 

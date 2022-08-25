@@ -1,14 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import PostForm
 from distutils.log import error
-from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt, requires_csrf_token
 
 # Create your views here.
 
-@requires_csrf_token
-@ensure_csrf_cookie
+
 def index(request, **post_id):
     if post_id != {}:
         val = next(iter(post_id.items()))[1]
@@ -19,6 +17,8 @@ def index(request, **post_id):
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect('/')
+        else:
+            form = PostForm(instance=post)
         posts = Post.objects.all().order_by('-id')[:20]
         return render(request, 'index.html')
     # newpost
@@ -34,18 +34,19 @@ def index(request, **post_id):
         return render(request, 'index.html',
                       {'posts': posts})
 
+
 def delete(request, post_id):
     # Find post
     post = Post.objects.get(id=post_id)
     post.delete()
     return HttpResponseRedirect('/')
 
+
 def edit(request, post_id):
     post = Post.objects.get(id=post_id)
     return render(request, 'edit.html', {'post': post, 'post_id': post_id})
 
 
-@csrf_exempt
 def tweetLikeAdd(request, post_id):
     if request.method == "POST":
         post = Post.objects.get(id=post_id)
@@ -56,7 +57,6 @@ def tweetLikeAdd(request, post_id):
     return render(request, 'index.html')
 
 
-@csrf_exempt
 def tweetLikeSubtract(request, post_id):
     if request.method == "POST":
         post = Post.objects.get(id=post_id)

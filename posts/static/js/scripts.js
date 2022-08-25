@@ -31,7 +31,7 @@ function getCookie(name) {
   }
   return cookieValue;
 }
-const JS_CSRFTOKEN = getCookie("csrftoken");
+const csrftoken = getCookie("csrftoken");
 
 $(function () {
   // Global valuable
@@ -50,9 +50,10 @@ $(function () {
       // Increase the count of likes
       $.ajax({
         url: "/tweetLikeAdd/" + post_id + "/",
-        type: "POST",
+        method: "POST",
         data: { post_id: post_id },
-        headers: { "X-CSRFToken": JS_CSRFTOKEN },
+        headers: { "X-CSRFToken": csrftoken },
+        mode: "same-origin",
       })
         // Successful
         .done((data) => {
@@ -72,9 +73,10 @@ $(function () {
       // Decrease the count of likes
       $.ajax({
         url: "/tweetLikeSubtract/" + post_id + "/",
-        type: "POST",
+        method: "POST",
         data: { post_id: post_id },
-        headers: { "X-CSRFToken": JS_CSRFTOKEN },
+        headers: { "X-CSRFToken": csrftoken },
+        mode: "same-origin",
       })
         // Successful
         .done((data) => {

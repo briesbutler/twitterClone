@@ -45,7 +45,7 @@ $(function () {
     var like_count_obj = $(this).parent().find(".js-like-count");
     var like_count = Number(like_count_obj.html());
 
-    if (heart_icon_url == "/static/img/icon-heart-twitterblue.svg") {
+    if (heart_icon_url != "/static/img/heart-fill.png") {
       // It has not been liked
       // Increase the count of likes
       $.ajax({

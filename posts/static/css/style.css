@@ -11,7 +11,7 @@ body {
 
 .content {
   max-width: 600px;
-  min-width: 445px;
+  min-width: 365px;
   padding: 0;
   justify-content: center;
   display: flex;

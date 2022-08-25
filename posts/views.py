@@ -7,8 +7,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt, requir
 
 # Create your views here.
 
-@ensure_csrf_cookie
 @requires_csrf_token
+@ensure_csrf_cookie
 def index(request, **post_id):
     if post_id != {}:
         val = next(iter(post_id.items()))[1]

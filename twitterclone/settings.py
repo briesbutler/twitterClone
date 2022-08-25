@@ -66,6 +66,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = [' https://twitterclone-gsb.herokuapp.com','https://127.0.0.1']
+
 ROOT_URLCONF = 'twitterclone.urls'
 
 TEMPLATES = [
